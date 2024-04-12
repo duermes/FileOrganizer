@@ -17,16 +17,13 @@ public class FileManager {
     public void loadContent() {
 
         if (!file.isDirectory() || !file.exists()) {
-            System.out.println("Directorio no encontrado o no existe");
-            boolean answer = file.getParentFile().mkdirs();
-            // crear un package
-
+            System.out.println("Creando nuevo directorio...");
+            boolean answer = file.mkdirs();
             if (!answer) {
                 System.out.println("No se pudo crear el directorio");
                 return;
             }
-
-
+            System.out.println("Directorio creado");
         }
         System.out.println(file.getParentFile());
     }
