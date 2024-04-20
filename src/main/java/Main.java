@@ -8,7 +8,6 @@ public class Main {
         String packageName = "src/main/java/data";
         FileManager fileManager = new FileManager(packageName);
         fileManager.loadContent();
-        System.out.println("hola");
 
     }
 }

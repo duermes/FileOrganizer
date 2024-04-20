@@ -1,32 +1,41 @@
 import java.io.File;
-import java.io.IOException;
 
 public class FileManager {
-    String name;
-    String directoryPath;
-    String lastModification;
-    String creationDate;
-    double size;
-    File file;
+    private String directoryPath;
+    private File folder;
 
     public FileManager(String directoryPath) {
         this.directoryPath = directoryPath;
-        file = new File(directoryPath);
+        folder = new File(directoryPath);
     }
-
     public void loadContent() {
 
-        if (!file.isDirectory() || !file.exists()) {
+        if (!folder.isDirectory() || !folder.exists()) {
             System.out.println("Creando nuevo directorio...");
-            boolean answer = file.mkdirs();
+            boolean answer = folder.mkdirs();
             if (!answer) {
                 System.out.println("No se pudo crear el directorio");
                 return;
             }
             System.out.println("Directorio creado");
         }
-        System.out.println(file.getParentFile());
+        System.out.println(folder.getParentFile());
+
+        File[] files = folder.listFiles();
+
+        for (File file : files) {
+            if (file != null) {
+                if (file.isDirectory()) {
+                    System.out.println("Directorio: " + file.getName());
+                } else {
+                    System.out.println("Archivo: " + file.getName());
+                }
+            }
+        }
+
     }
+
+
 
 
 }
