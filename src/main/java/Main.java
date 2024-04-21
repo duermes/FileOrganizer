@@ -6,8 +6,21 @@ public class Main {
      */
     //hello
         String packageName = "src/main/java/data";
-        FileManager fileManager = new FileManager(packageName);
+        FileManager fileManager = new FileManager(packageName, 13);
         fileManager.loadContent();
 
+        // ordenando por tamaño
+
+        for (FileItem item : fileManager.getItems()) {
+                System.out.println(item);
+        }
+        FileUtils.sortItemsBySize(fileManager.getItems(), fileManager.getCounter());
+
+        System.out.println("Ordenado por tamaño");
+        for (FileItem item : fileManager.getItems()) {
+            if (item != null) {
+                System.out.println(item);
+            }
+        }
     }
 }
