@@ -49,6 +49,20 @@ public class FileManager {
         }
     }
 
+    public void removeItem(FileItem item) {
+        FileItem[] arr = FileUtils.removeItem(items, item);
+        if (items.length != arr.length) {
+            items = arr;
+            counter--;
+        }
+
+    };
+
+    public void addItem(FileItem item) {
+        items = FileUtils.addItem(items, item);
+        counter++;
+    };
+
     public FileItem[] getItems() {
         return items;
     }

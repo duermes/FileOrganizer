@@ -16,6 +16,20 @@ public class FileItem {
         this.size = size;
     }
 
+    public String getAttribute(String attributeName) {
+        switch (attributeName.toLowerCase()) {
+            case "name":
+                return this.name;
+            case "size":
+                return String.valueOf(this.size);
+            case "lastmodified":
+                return this.getLastModification().toString();
+            case "creationdate":
+                return this.creationDate.toString();
+            default:
+                return null;
+        }
+    }
     public String getName() {
         return name;
     }

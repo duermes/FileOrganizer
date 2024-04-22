@@ -9,28 +9,30 @@ public class Main {
         FileManager fileManager = new FileManager(packageName, 13);
         fileManager.loadContent();
 
-        // ordenando por tamaño
+
+        FileUtils.sortItemsBySize(fileManager.getItems());
 
         for (FileItem item : fileManager.getItems()) {
                 System.out.println(item);
         }
-        FileUtils.sortItemsBySize(fileManager.getItems(), fileManager.getCounter());
 
-        System.out.println("Ordenado por tamaño");
-        for (FileItem item : fileManager.getItems()) {
-            if (item != null) {
-                System.out.println(item);
-            }
+
+        FileItem[] arr2 = FileUtils.searchBySizeAndLimitAnswer(fileManager.getItems(), 3);
+        System.out.println(arr2);
+
+        for (FileItem item : arr2) {
+            System.out.println(item);
         }
 
+        /*
        int index = FileUtils.searchItemBinary(fileManager.getItems(), "cat.jpg");
-
-
         if (index == -1) {
             System.out.println("No se encontró");
         } else {
             System.out.println("se encontró");
         }
+
+         */
 
 
 
