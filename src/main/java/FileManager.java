@@ -57,6 +57,10 @@ public class FileManager {
         return counter;
     }
 
+    public FileItem getItem(int index) {
+        return items[index];
+    }
+
 
 
 }

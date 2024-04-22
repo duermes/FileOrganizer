@@ -22,5 +22,17 @@ public class Main {
                 System.out.println(item);
             }
         }
+
+       int index = FileUtils.searchItemBinary(fileManager.getItems(), "cat.jpg");
+
+
+        if (index == -1) {
+            System.out.println("No se encontró");
+        } else {
+            System.out.println("se encontró");
+        }
+
+
+
     }
 }
