@@ -9,8 +9,8 @@ public class Main {
         FileManager fileManager = new FileManager(packageName, 13);
         fileManager.loadContent();
 
-
-        FileUtils.sortItemsBySize(fileManager.getItems());
+        /*
+        FileUtils.sortByCreationAndSize(fileManager.getItems());
 
         for (FileItem item : fileManager.getItems()) {
                 System.out.println(item);
@@ -24,7 +24,7 @@ public class Main {
             System.out.println(item);
         }
 
-        /*
+
        int index = FileUtils.searchItemBinary(fileManager.getItems(), "cat.jpg");
         if (index == -1) {
             System.out.println("No se encontró");

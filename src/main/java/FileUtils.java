@@ -1,4 +1,6 @@
-
+import java.nio.file.attribute.FileTime;
+import java.time.LocalDate;
+import java.time.ZoneId;
 public class FileUtils {
     public static void sortItemsBySize(FileItem[] items) {
         // using insertion sort
@@ -45,20 +47,27 @@ public class FileUtils {
         }
 
     };
-    public static void sortItemsByCreationDate(FileItem[] items) {
+
+    public static void sortByCreationAndSize(FileItem[] arr) {
         int j = 0;
         FileItem temp;
-
-        for (int i = 1; i < items.length; i++) {
-            temp = items[i];
+        for (int i = 1; i < arr.length; i++) {
+            temp = arr[i];
             j = i-1;
-            while (j >= 0 && items[j].getCreationDate().compareTo(temp.getCreationDate()) > 0) {
-                items[j+1] = items[j];
+            while (j >= 0 && (convertTime(arr[j].getCreationDate()).compareTo(convertTime(temp.getCreationDate())) > 0 ||
+                    (convertTime(arr[j].getCreationDate()).compareTo(convertTime(temp.getCreationDate())) == 0 && arr[j].getSize() < temp.getSize()))) {
+                arr[j+1] = arr[j];
                 j--;
             }
-            items[j+1] = temp;
+            arr[j+1] = temp;
         }
     };
+
+
+    private static LocalDate convertTime(FileTime date) {
+      return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    };
+
    public static FileItem[] addItem(FileItem[] arr, FileItem item) {
        FileItem[] newArr = new FileItem[arr.length+1];
        int counter = 0;
@@ -141,4 +150,6 @@ public class FileUtils {
         }
         return result.length > 0 ? result : null;
     };
+
+
 }
