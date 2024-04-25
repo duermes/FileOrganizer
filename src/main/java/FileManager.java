@@ -3,14 +3,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-
 public class FileManager {
     private String directoryPath;
     private File folder;
     private File[] files;
     private FileItem[] items;
     private int counter;
-    private FileUtils utils;
 
     public FileManager(String directoryPath, int size) {
         this.directoryPath = directoryPath;
@@ -74,7 +72,6 @@ public class FileManager {
     public FileItem getItem(int index) {
         return items[index];
     }
-
 
 
 }

@@ -8,8 +8,10 @@ public class Main {
         String packageName = "src/main/java/data";
         FileManager fileManager = new FileManager(packageName, 13);
         fileManager.loadContent();
+        FrameMain frame = new FrameMain(fileManager);
 
-        /*
+
+       /*
         FileUtils.sortByCreationAndSize(fileManager.getItems());
 
         for (FileItem item : fileManager.getItems()) {
@@ -32,7 +34,7 @@ public class Main {
             System.out.println("se encontró");
         }
 
-         */
+      */
 
 
 

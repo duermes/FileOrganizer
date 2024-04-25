@@ -16,21 +16,6 @@ public class FileItem {
         this.creationDate = creationDate;
         this.size = size;
     }
-
-    public String getAttribute(String attributeName) {
-        switch (attributeName.toLowerCase()) {
-            case "name":
-                return this.name;
-            case "size":
-                return String.valueOf(this.size);
-            case "lastmodified":
-                return this.getLastModification().toString();
-            case "creationdate":
-                return this.creationDate.toString();
-            default:
-                return null;
-        }
-    }
     public String getName() {
         return name;
     }
@@ -52,8 +37,8 @@ public class FileItem {
 
     @Override
     public String toString() {
-        return "\u001B[36mname: \u001B[33m"+getName()+" \u001B[36mLast Modification: \u001B[33m"+getLastModification()+" \u001B[36msize: \u001B[33m"+
-                getSize()+" \u001B[36mdirectory: \u001B[33m"+isDirectory()+" \u001B[36mcreation date: \u001B[33m"+ getCreationDate();
+        return "name: "+getName()+" Last Modification: "+getLastModification()+" size: "+
+                getSize()+"  directory: "+isDirectory()+" creation date: "+ getCreationDate();
     }
 
 

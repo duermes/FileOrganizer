@@ -47,6 +47,21 @@ public class FileUtils {
         }
 
     };
+    public static void sortItemsByCreationDate(FileItem[] items) {
+        int j = 0;
+        FileItem temp;
+
+        for (int i = 1; i < items.length; i++) {
+            temp = items[i];
+            j = i-1;
+            while (j >= 0 && items[j].getCreationDate().compareTo(temp.getCreationDate()) > 0) {
+                items[j+1] = items[j];
+                j--;
+            }
+            items[j+1] = temp;
+        }
+
+    };
 
     public static void sortByCreationAndSize(FileItem[] arr) {
         int j = 0;
@@ -62,11 +77,10 @@ public class FileUtils {
             arr[j+1] = temp;
         }
     };
-
-
     private static LocalDate convertTime(FileTime date) {
       return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     };
+
 
    public static FileItem[] addItem(FileItem[] arr, FileItem item) {
        FileItem[] newArr = new FileItem[arr.length+1];
@@ -150,6 +164,4 @@ public class FileUtils {
         }
         return result.length > 0 ? result : null;
     };
-
-
 }
